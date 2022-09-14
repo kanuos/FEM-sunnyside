@@ -16,8 +16,8 @@
   --base-font: "Barlow";
 
   --lg-box: 80vh;
-  --box-height : 50vh;
-  --box-height--lg : 75vh;
+  --box-height: 50vh;
+  --box-height--lg: 75vh;
 }
 
 /* global reset */
@@ -224,6 +224,7 @@ header {
   font-family: var(--heading-font);
   font-size: 0.75rem;
   position: relative;
+  padding: 0 0.25rem;
 }
 .content__link::after {
   content: "";
@@ -251,7 +252,7 @@ header {
 
 .img-box {
   width: 100%;
-  height:var(--lg-box);
+  height: calc(1.15 * var(--lg-box));
   position: relative;
   background-size: cover;
   background-position: top;
@@ -262,9 +263,14 @@ header {
   padding: 3.5rem;
 }
 
-.img-box > * {
+.img-box-content {
   max-width: 20rem;
-  margin: 1rem auto;
+  height: 25%;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .box--1 {
@@ -296,6 +302,10 @@ header {
 /* testimonial */
 .testimonial-wrapper {
   padding: 3rem;
+  display: grid;
+  place-items: center;
+  min-height: calc(2 * var(--box-height));
+  height: 100%;
 }
 
 .testimonial__heading {
@@ -342,6 +352,7 @@ header {
 
 .testimonial__user {
   font-size: 1rem;
+  font-weight: 900;
   font-family: var(--heading-font);
   color: var(--neutral-darkest);
 }
@@ -352,13 +363,80 @@ header {
   color: var(--neutral-light);
 }
 
+/* footer content */
+footer.footer {
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  background-color: var(--primary-cyan-dark);
+  padding-bottom: 4rem;
+}
+
+.decoration-img-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.decoration-img-list img {
+  display: block;
+  height: 12rem;
+  object-fit: cover;
+  width: 100%;
+}
+
+.footer-logo {
+  fill: var(--primary-cyan);
+}
+
+.footer-content {
+  display: flex;
+  margin-top: 5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.footer-list > li {
+  color: var(--primary-cyan);
+  font-size: 0.8rem;
+  transition: all 0.25s linear;
+  cursor: pointer;
+}
+
+.footer-list > li:hover {
+  color: var(--neutral-lightest);
+}
+
+.footer-list,
+.social-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  list-style: none;
+}
+
+.social-icon {
+  height: 1rem;
+  width: 1rem;
+  fill: var(--primary-cyan);
+  transition: all 0.5s ease;
+}
+
+.social-icon:hover {
+  fill: var(--neutral-lightest);
+  transform: translateY(-1px) scale(1.15);
+}
+
 /*
 MEDIA Queries
 */
 
 @media screen and (min-width: 640px) {
   header {
-    height:var(--lg-box);
+    height: var(--lg-box);
     background-image: url(images/desktop/image-header.jpg);
   }
   .header-content {
@@ -369,6 +447,15 @@ MEDIA Queries
   }
   .heading--arrow {
     height: 3rem;
+  }
+  .decoration-img-list img {
+    height: 15rem;
+  }
+  .box--1 {
+    background-image: url(/images/desktop/image-graphic-design.jpg);
+  }
+  .box--2 {
+    background-image: url(/images/desktop/image-photography.jpg);
   }
 }
 @media screen and (min-width: 768px) {
@@ -440,13 +527,6 @@ MEDIA Queries
     background-repeat: no-repeat;
   }
 
-  .box--1 {
-    background-image: url(/images/desktop/image-graphic-design.jpg);
-  }
-  .box--2 {
-    background-image: url(/images/desktop/image-photography.jpg);
-  }
-
   .content-container {
     align-items: flex-start;
   }
@@ -460,11 +540,10 @@ MEDIA Queries
   .content-container,
   .content img,
   .content {
-    height:var(--lg-box);
+    height: var(--lg-box);
   }
 
   .content__text {
-    /* max-width: 25rem; */
     margin: 2rem 2rem 3rem 0;
     font-size: 0.9rem;
   }
@@ -486,6 +565,14 @@ MEDIA Queries
   .testimonial__heading {
     font-size: 1.5rem;
   }
+
+  .decoration-img-list img {
+    height: 20rem;
+  }
+
+  .decoration-img-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 @media screen and (min-width: 1440px) {
   .content-container {
@@ -495,11 +582,22 @@ MEDIA Queries
   .content__text {
     max-width: 25rem;
   }
-  .img-box,
   .content-container,
   .content img,
   .content {
-    height:var(--box-height--lg);
+    height: var(--box-height--lg);
+  }
+  .img-box {
+    height: calc(1.25 * var(--box-height--lg));
+  }
+
+  .img-box-content {
+    max-width: 30rem;
+  }
+
+  .testimonial__img {
+    height: 6rem;
+    width: 6rem;
   }
 
   .content__heading--sub,
@@ -513,5 +611,9 @@ MEDIA Queries
 
   .content__link {
     font-size: 1rem;
+  }
+
+  .decoration-img-list img {
+    height: var(--box-height--lg);
   }
 }
