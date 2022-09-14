@@ -51,6 +51,7 @@ header {
 
 .heading--main {
   font-size: 2.5rem;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.25rem;
   text-align: center;
@@ -165,7 +166,7 @@ header {
 
 @media screen and (min-width: 640px) {
   header {
-    height: 90vh;
+    height: 80vh;
     background-image: url(images/desktop/image-header.jpg);
   }
   .heading--main {
@@ -173,7 +174,7 @@ header {
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .nav-list-container::after,
   .hamburger-btn--toggler,
   .hamburger-btn--toggler:hover {
@@ -218,5 +219,202 @@ header {
 
   .nav-list__item:hover:not(.nav-list__item--main) {
     color: var(--neutral-darkest);
+  }
+}
+
+/* main content */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+/* content image */
+.content img {
+  display: block;
+  object-fit: cover;
+  height: 50vh;
+  width: 100%;
+}
+
+.content-container {
+  height: 50vh;
+  padding: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-container > * {
+  max-width: 25rem;
+}
+
+.content__heading--sub,
+.content__heading {
+  width: 75%;
+  font-weight: 900;
+  font-family: var(--heading-font);
+  color: var(--neutral-darkest);
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.content__text--sub,
+.content__text {
+  margin: 2rem 1rem 3rem 1rem;
+  font-size: 0.9rem;
+  color: var(--neutral-dark);
+  text-align: center;
+}
+
+.content__link {
+  font-weight: 900;
+  text-decoration: none;
+  color: var(--neutral-darkest);
+  text-transform: uppercase;
+  font-family: var(--heading-font);
+  font-size: 0.75rem;
+  position: relative;
+}
+.content__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1.5px;
+  height: 0.5rem;
+  z-index: -1;
+  border-radius: 5rem;
+  opacity: 0.25;
+  transition: all 0.3s linear;
+}
+.content__link:hover::after {
+  opacity: 0.75;
+}
+
+.content__link--yellow:after {
+  background-color: var(--primary-yellow);
+}
+
+.content__link--pink:after {
+  background-color: var(--primary-red);
+}
+
+.img-box {
+  width: 100%;
+  height: 75vh;
+  position: relative;
+  background-size: cover;
+  background-position: top;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 3.5rem;
+}
+
+.img-box > * {
+  max-width: 20rem;
+  margin: 1rem auto;
+}
+
+.box--1 {
+  background-image: url(/images/mobile/image-graphic-design.jpg);
+}
+.box--2 {
+  background-image: url(/images/mobile/image-photography.jpg);
+}
+
+.content__text--sub {
+  font-size: 0.9rem;
+}
+
+.box--1 .content__heading--sub,
+.box--1 .content__text--sub {
+  color: var(--primary-cyan);
+}
+
+.box--2 .content__heading--sub,
+.box--2 .content__text--sub {
+  color: var(--primary-blue);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 768px) {
+  .content-container {
+    margin: auto auto;
+  }
+  .content {
+    flex-direction: row;
+    width: 100%;
+    height: 50vh;
+  }
+  .content--reverse {
+    flex-direction: row-reverse;
+    width: 100%;
+  }
+
+  .content > * {
+    flex: 1 0 50%;
+  }
+
+  .img-box {
+    height: 50vh;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+  }
+
+  .box--1 {
+    background-image: url(/images/desktop/image-graphic-design.jpg);
+  }
+  .box--2 {
+    background-image: url(/images/desktop/image-photography.jpg);
+  }
+
+  .content-container {
+    align-items: flex-start;
+  }
+
+  .content__heading,
+  .content__text {
+    text-align: left;
+  }
+
+  .content__heading {
+    font-size: 2rem;
+  }
+
+  .content__text {
+    /* max-width: 25rem; */
+    margin: 2rem 2rem 3rem 0;
+    font-size: 0.9rem;
+  }
+
+  .grid--lg-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .content-container {
+    margin: auto auto;
+    padding: 0 9rem;
+  }
+  .content__text {
+    max-width: 25rem;
+  }
+  .img-box,
+  .content-container,
+  .content img,
+  .content {
+    height: 60vh;
   }
 }
